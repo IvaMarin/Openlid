@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(AudioSource))]
 #if ENABLE_INPUT_SYSTEM 
     [RequireComponent(typeof(PlayerInput))]
 #endif
@@ -28,11 +29,12 @@ namespace StarterAssets
 
         [Tooltip("How fast the camera turns to face movement direction")]
         [Range(0.0f, 1f)]
-        public float CameraSensitivity = 1f;
+        public static float CameraSensitivity = 1f;
 
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
+        private AudioSource _audioSource;
         public AudioClip LandingAudioClip;
         public AudioClip JumpPadAudioClip;
         public AudioClip[] FootstepAudioClips;
@@ -135,6 +137,7 @@ namespace StarterAssets
 
         private void Awake()
         {
+            _audioSource = GetComponent<AudioSource>();
             // get a reference to our main camera
             if (_mainCamera == null)
             {
@@ -386,7 +389,7 @@ namespace StarterAssets
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    _audioSource.PlayOneShot(FootstepAudioClips[index], FootstepAudioVolume);
                 }
             }
         }
@@ -395,7 +398,7 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                _audioSource.PlayOneShot(LandingAudioClip, FootstepAudioVolume);
             }
         }
 
@@ -406,7 +409,7 @@ namespace StarterAssets
                 case "JumpPad":
                     if (hit.gameObject.transform.position.y < transform.position.y)
                     {
-                        AudioSource.PlayClipAtPoint(JumpPadAudioClip, transform.TransformPoint(_controller.center), JumpPadAudioVolume);
+                        _audioSource.PlayOneShot(JumpPadAudioClip, JumpPadAudioVolume);
                         _verticalVelocity = _jumpPadVelocity;
                     }
                     break;

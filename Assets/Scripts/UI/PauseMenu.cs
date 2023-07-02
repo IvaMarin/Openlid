@@ -1,18 +1,34 @@
+using Cinemachine;
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(StarterAssetsInputs))]
 public class PauseMenu : MonoBehaviour
 {
+    private enum InputActionMap
+    {
+        Player,
+        UI
+    }
+
     public static bool isGamePaused = false;
 
     public GameObject pauseMenuUI;
-    public GameObject settingsMenuUI;
-    public GameObject languagesMenuUI;
+    public GameObject controlsMenuUI;
+    public GameObject audioMenuUI;
 
     [SerializeField]
-    private Camera _camera;
+    private GameObject _player;
 
-    [SerializeField]
-    private KeyCode _pause = KeyCode.Escape;
+    private StarterAssetsInputs _input;
+    private PlayerInput _playerInput;
+
+    private void Awake()
+    {
+        _input = _player.GetComponent<StarterAssetsInputs>();
+        _playerInput = _player.GetComponent<PlayerInput>();
+    }
 
     private void Update()
     {
@@ -22,7 +38,7 @@ public class PauseMenu : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (Input.GetKeyDown(_pause))
+        if (_input.pause)
         {
             if (isGamePaused)
             {
@@ -32,6 +48,7 @@ public class PauseMenu : MonoBehaviour
             {
                 Pause();
             }
+            _input.pause = false;
         }
     }
 
@@ -39,24 +56,22 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
 
-        if (languagesMenuUI.activeSelf)
+        if (audioMenuUI.activeSelf)
         {
-            languagesMenuUI.SetActive(false);
+            audioMenuUI.SetActive(false);
         }
 
-        if (settingsMenuUI.activeSelf)
+        if (controlsMenuUI.activeSelf)
         {
-            settingsMenuUI.SetActive(false);
-            settingsMenuUI.GetComponent<SettingsMenu>().UpdateUISettingsValues();
+            controlsMenuUI.SetActive(false);
+            controlsMenuUI.GetComponent<SettingsMenu>().UpdateUISettingsValues();
         }
 
-        pauseMenuUI.GetComponent<Animator>().enabled = true;
+        //pauseMenuUI.GetComponent<Animator>().enabled = true;
 
         Time.timeScale = 1f;
-
+        _playerInput.SwitchCurrentActionMap(InputActionMap.Player.ToString());
         Cursor.visible = false;
-        _camera.enabled = true;
-
         isGamePaused = false;
     }
 
@@ -64,14 +79,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-
-        _camera.enabled = false;
-
+        _playerInput.SwitchCurrentActionMap(InputActionMap.UI.ToString());
         isGamePaused = true;
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }
