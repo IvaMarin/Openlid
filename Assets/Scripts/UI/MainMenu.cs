@@ -13,7 +13,23 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void ReturnToMainMenu() {
+    public void LoadMainMenu()
+    {
         Loader.Load(Loader.Scene.TitleScreen);
+    }
+
+    public void LoadRoom()
+    {
+        Loader.Load(Loader.Scene.Room);
+    }
+
+    public void LoadIslands()
+    {
+        Loader.Load(Loader.Scene.Islands);
+    }
+
+    public void LoadCity()
+    {
+        Loader.Load(Loader.Scene.City);
     }
 }

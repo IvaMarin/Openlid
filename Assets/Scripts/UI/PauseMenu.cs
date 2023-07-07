@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject controlsMenuUI;
     public GameObject audioMenuUI;
+    public GameObject dreamSelectionMenuUI;
 
     [SerializeField]
     private GameObject _player;
@@ -42,42 +43,49 @@ public class PauseMenu : MonoBehaviour
         {
             if (isGamePaused)
             {
+                HideUI();
                 Resume();
             }
             else
             {
+                pauseMenuUI.SetActive(true);
                 Pause();
             }
             _input.pause = false;
         }
     }
 
-    public void Resume()
+    private void HideUI()
     {
         pauseMenuUI.SetActive(false);
 
-        if (audioMenuUI.activeSelf)
+        if (audioMenuUI != null && audioMenuUI.activeSelf)
         {
             audioMenuUI.SetActive(false);
         }
 
-        if (controlsMenuUI.activeSelf)
+        if (controlsMenuUI != null && controlsMenuUI.activeSelf)
         {
             controlsMenuUI.SetActive(false);
             controlsMenuUI.GetComponent<SettingsMenu>().UpdateUISettingsValues();
         }
 
-        //pauseMenuUI.GetComponent<Animator>().enabled = true;
+        if (dreamSelectionMenuUI != null && dreamSelectionMenuUI.activeSelf)
+        {
+            dreamSelectionMenuUI.SetActive(false);
+        }
+    }
 
+    public void Resume()
+    {
         Time.timeScale = 1f;
         _playerInput.SwitchCurrentActionMap(InputActionMap.Player.ToString());
         Cursor.visible = false;
         isGamePaused = false;
     }
 
-    private void Pause()
+    public void Pause()
     {
-        pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         _playerInput.SwitchCurrentActionMap(InputActionMap.UI.ToString());
         isGamePaused = true;

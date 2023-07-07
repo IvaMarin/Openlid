@@ -27,6 +27,10 @@ public class RoomChanges : MonoBehaviour
         if (GameCompletion.hasCompletedCity)
         {
             _cityTrophy.SetActive(true);
+        }
+
+        if (GameCompletion.hasCompletedIslands && GameCompletion.hasCompletedCity)
+        {
             _portal.SetActive(true);
             _door.isLocked = false;
         }

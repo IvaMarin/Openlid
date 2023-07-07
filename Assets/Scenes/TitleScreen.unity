@@ -1943,7 +1943,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &414594824
 GameObject:
@@ -2513,7 +2513,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &561844567
 MonoBehaviour:
@@ -3632,7 +3632,7 @@ RectTransform:
   - {fileID: 1069342385}
   - {fileID: 187756079}
   m_Father: {fileID: 1123150642}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4094,7 +4094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -283.69196, y: 118.264984}
+  m_AnchoredPosition: {x: -283.69196, y: 125}
   m_SizeDelta: {x: 125.38385, y: 294.475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1017842168
@@ -4124,6 +4124,8 @@ MonoBehaviour:
     RUN
 
     INTERACT
+
+    PAUSE
 
     SENSITIVITY'
   m_isRightToLeft: 0
@@ -4189,7 +4191,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -19.485718}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4455,7 +4457,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1119944601
 GameObject:
@@ -4629,8 +4631,8 @@ RectTransform:
   - {fileID: 1200204331}
   - {fileID: 1079250854}
   - {fileID: 44123531}
-  - {fileID: 1252474006}
   - {fileID: 818227731}
+  - {fileID: 1252474006}
   - {fileID: 744528877}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -4891,7 +4893,9 @@ MonoBehaviour:
 
     - SHIFT
 
-    - E'
+    - E
+
+    - ESC'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -5137,7 +5141,7 @@ RectTransform:
   - {fileID: 517618576}
   - {fileID: 342742229}
   m_Father: {fileID: 1123150642}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7182,7 +7186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39, y: 0.000015258789}
+  m_AnchoredPosition: {x: 39, y: -32}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729050453
@@ -8464,7 +8468,7 @@ PrefabInstance:
     - target: {fileID: 1747807786606340259, guid: c409e576cc1d4f44dafec6a98980839d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1747807786606340259, guid: c409e576cc1d4f44dafec6a98980839d,
         type: 3}

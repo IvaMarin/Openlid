@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class CollectTask : MonoBehaviour
 {
     [SerializeField]
@@ -15,12 +16,19 @@ public class CollectTask : MonoBehaviour
     [SerializeField]
     private GameObject _player;
 
+    private AudioSource _audioSource;
+
     [SerializeField]
     private AudioClip _completionSound;
 
     [Range(0, 1)]
     [SerializeField]
     private float _completionSoundVolume = 1f;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnEnable()
     {
@@ -35,7 +43,6 @@ public class CollectTask : MonoBehaviour
     private void CountItems()
     {
         _currentCount++;
-        print(_currentCount);
         if (_currentCount == _totalCount)
         {
             GiveReward();
@@ -44,8 +51,7 @@ public class CollectTask : MonoBehaviour
 
     void GiveReward()
     {
-        print("all orbs collected");
-        AudioSource.PlayClipAtPoint(_completionSound, _player.transform.position, _completionSoundVolume);
+        _audioSource.PlayOneShot(_completionSound, _completionSoundVolume);
         _prefab.SetActive(true);
     }
 }

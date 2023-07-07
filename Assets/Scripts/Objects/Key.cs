@@ -5,17 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Key : MonoBehaviour, ICollectible
 {
-    [SerializeField]
-    private AudioClip _obtainSound;
+    private AudioSource _audioSource;
 
-    [Range(0, 1)]
-    [SerializeField]
-    private float _obtainSoundVolume = 1f;
+    private void Awake()
+    {
+        _audioSource = transform.parent.gameObject.GetComponent<AudioSource>();
+    }
 
     public void Collect()
     {
         Destroy(gameObject);
-        AudioSource.PlayClipAtPoint(_obtainSound, transform.position, _obtainSoundVolume);
+        _audioSource.Play();
         GameCompletion.hasKeyToCabin = true;
     }
 }
