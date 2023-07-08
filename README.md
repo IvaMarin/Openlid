@@ -11,16 +11,3 @@ This game is my interpretation of Yume Nikki in 3D. There are two dream worlds t
 ![Openlid_Cabin](Screenshots/Openlid_Cabin.png)
 
 ![Openlid_City](Screenshots/Openlid_City.png)
-
-## Controls
-
-| Keyboard & Mouse | Controls |
-|:-:|:-|
-| W | Move forwards |
-| A | Move left |
-| S | Move backwards |
-| D | Move right |
-| Space | Jump |
-| Shift | Run |
-| E | Interact |
- 
